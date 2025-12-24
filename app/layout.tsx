@@ -1,39 +1,21 @@
 import { Metadata } from 'next';
-import Footer from '@/components/ui/Footer';
-import Navbar from '@/components/ui/Navbar';
-import { Toaster } from '@/components/ui/Toasts/toaster';
-import { PropsWithChildren, Suspense } from 'react';
-import { getURL } from '@/utils/helpers';
+import { PropsWithChildren } from 'react';
 import 'styles/main.css';
 
-const title = 'Next.js Subscription Starter';
-const description = 'Brought to you by Vercel, Stripe, and Supabase.';
-
 export const metadata: Metadata = {
-  metadataBase: new URL(getURL()),
-  title: title,
-  description: description,
-  openGraph: {
-    title: title,
-    description: description
-  }
+  title: '高中物理名师备课站',
+  description: '专注物理教学资源分享',
 };
 
-export default async function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
-      <body className="bg-black">
-        <Navbar />
-        <main
-          id="skip"
-          className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
-        >
+    <html lang="zh-CN">
+      {/* 去掉了 bg-black，改为 bg-white */}
+      <body className="bg-white text-gray-900">
+        {/* 这里删掉了原本的 <Navbar /> 和 <Footer />，因为你的 page.tsx 里已经写好了 */}
+        <main>
           {children}
         </main>
-        <Footer />
-        <Suspense>
-          <Toaster />
-        </Suspense>
       </body>
     </html>
   );
